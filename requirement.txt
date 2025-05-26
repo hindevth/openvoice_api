@@ -1,0 +1,3 @@
+git+https://github.com/hindev9th/openvoice.git
+git+https://github.com/hindevth/MeloTTS.git@main
+git+https://github.com/hindev9th/vi_clear.git

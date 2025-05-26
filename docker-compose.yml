@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  openvoice-api:
+    build:
+      context: .
+      target: production
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./outputs_v2:/app/outputs_v2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
