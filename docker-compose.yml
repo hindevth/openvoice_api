@@ -9,6 +9,7 @@ services:
       - "8000:8000"
     volumes:
       - ./outputs_v2:/app/outputs_v2
+      - ./uploads:/app/uploads
     deploy:
       resources:
         reservations:

@@ -26,7 +26,7 @@ SUPPORTED_LANGUAGES = ['VI', 'EN', 'ZH', 'JP', 'KR']
 
 # Default speakers for each language
 DEFAULT_SPEAKERS = {
-    "VI": "VI-hue",
+    "VI": "VI-default",
     "EN": "EN-Default",
     "ZH": "ZH",
     "JP": "JP",

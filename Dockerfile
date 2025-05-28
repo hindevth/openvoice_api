@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Base image with CUDA support for GPU acceleration
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 as base
+FROM nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04 as base
 
 # Set working directory
 WORKDIR /app

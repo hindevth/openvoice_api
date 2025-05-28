@@ -1,3 +1,7 @@
 .vscode
 uploads
 outputs_v2
+processed
+__pycache__/
+*.pyc
+*.zip

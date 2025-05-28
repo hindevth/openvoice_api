@@ -95,5 +95,5 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=port,
         reload=False,
-        workers=1  # Single worker due to model loading
+        workers=1 
     )
