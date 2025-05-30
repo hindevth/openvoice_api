@@ -39,7 +39,7 @@ async def clone_voice(request: VoiceCloneRequest):
             buffer, 
             media_type="audio/wav", 
             headers={
-                "Content-Disposition": f"attachment; filename=cloned_voice.wav"
+                "Content-Disposition": f"attachment; filename={request.target_embedding_name}.wav"
             }
         )
 

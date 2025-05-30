@@ -16,7 +16,7 @@ except ImportError as e:
     print("Please make sure OpenVoice and MeloTTS are installed")
     raise
 
-from app.config.settings import DEVICE, MAX_WORKERS, logger
+from app.config.settings import DEVICE, MAX_WORKERS, logger, MODELS
 
 class VoiceService:
     """Service for voice processing operations"""
@@ -61,7 +61,7 @@ class VoiceService:
     ):
         """Generate cloned voice"""
         # Initialize MeloTTS
-        model = TTS(language=language, device=self.device)
+        model = MODELS[language]
         speaker_ids = model.hps.data.spk2id
         # Select speaker
         if speaker_key not in speaker_ids:

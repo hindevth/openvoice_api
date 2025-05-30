@@ -4,6 +4,7 @@ Configuration settings for Voice Cloning API
 import os
 import torch
 import logging
+from melo.api import TTS
 
 # Logging configuration
 logging.basicConfig(level=logging.INFO)
@@ -18,7 +19,7 @@ ALLOWED_EXTENSIONS = {'wav', 'mp3', 'flac', 'm4a'}
 MAX_FILE_SIZE = 50 * 1024 * 1024  # 50MB
 
 # Model settings
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda:0" if  torch.cuda.is_available() else "cpu"
 MAX_WORKERS = 4
 
 # Supported languages
@@ -31,6 +32,16 @@ DEFAULT_SPEAKERS = {
     "ZH": "ZH",
     "JP": "JP",
     "KR": "KR"
+}
+
+MODELS = {
+    'EN': TTS(language='EN', device=DEVICE),
+    'ES': TTS(language='ES', device=DEVICE),
+    'FR': TTS(language='FR', device=DEVICE),
+    'ZH': TTS(language='ZH', device=DEVICE),
+    'JP': TTS(language='JP', device=DEVICE),
+    'KR': TTS(language='KR', device=DEVICE),
+    'VI': TTS(language='VI', device=DEVICE),
 }
 
 # Create necessary directories
