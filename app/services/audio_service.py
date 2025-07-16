@@ -120,8 +120,9 @@ class AudioService:
             return output_path
 
         finally:
+            print("đ")
             # Clean up temp file
-            cleanup_file(src_path)
+            # cleanup_file(src_path)
 
 # Global audio service instance
 audio_service = AudioService()

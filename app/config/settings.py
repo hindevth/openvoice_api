@@ -23,15 +23,18 @@ DEVICE = "cuda:0" if  torch.cuda.is_available() else "cpu"
 MAX_WORKERS = 4
 
 # Supported languages
-SUPPORTED_LANGUAGES = ['VI', 'EN', 'ZH', 'JP', 'KR']
+SUPPORTED_LANGUAGES = ['VI', 'EN', 'ZH', 'JP', 'KR', 'FR', 'ES']
 
 # Default speakers for each language
 DEFAULT_SPEAKERS = {
     "VI": "VI-default",
     "EN": "EN-Default",
-    "ZH": "ZH",
-    "JP": "JP",
-    "KR": "KR"
+    'ZH': 'ZH',
+    'JP': 'JP',
+    'KR': 'KR',
+    'FR': 'FR',
+    'ES': 'ES',
+    'VI_MIX_EN': 'Vi_mix'
 }
 
 MODELS = {
@@ -42,6 +45,7 @@ MODELS = {
     'JP': TTS(language='JP', device=DEVICE),
     'KR': TTS(language='KR', device=DEVICE),
     'VI': TTS(language='VI', device=DEVICE),
+    'VI_MIX_EN': TTS(language='VI_MIX_EN', device=DEVICE),
 }
 
 # Create necessary directories

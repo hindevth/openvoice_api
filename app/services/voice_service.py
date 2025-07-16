@@ -1,6 +1,7 @@
 """
 Voice processing service
 """
+import time
 import torch
 import os
 from typing import Tuple
@@ -25,6 +26,7 @@ class VoiceService:
         self.device = DEVICE
         self.executor = ThreadPoolExecutor(max_workers=MAX_WORKERS)
         self.tone_color_converter = None
+        self.source_se_loaded = {}
         self._initialize_models()
     
     def _initialize_models(self):
@@ -69,19 +71,23 @@ class VoiceService:
             speaker_key = available_speakers[0] if available_speakers else 'default'
 
         speaker_id = speaker_ids[speaker_key]
-        source_se = self.tone_color_converter.load_source_se(speaker_key.lower())
+        if speaker_key not in self.source_se_loaded:
+            self.source_se_loaded[speaker_key] = self.tone_color_converter.load_source_se(speaker_key.lower())
+
         # Generate speech with MeloTTS
         model.tts_to_file(text, speaker_id, src_path, speed=speed)
+
         # Convert voice tone
         encode_message = "@LocaAI"
-        return self.tone_color_converter.convert(
+        converted = self.tone_color_converter.convert(
             audio_src_path=src_path,
-            src_se=source_se,
+            src_se=self.source_se_loaded[speaker_key],
             tgt_se=target_se,
             output_path=output_path,
             message=encode_message
         )
-    
+        return converted
+
     def get_speakers_for_language(self, language: str) -> list:
         """Get available speakers for a language"""
         try:
